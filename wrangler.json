@@ -1,0 +1,36 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "commerce-llms-txt-template",
+	"main": "./src/llms-txt-worker/index.ts",
+	"compatibility_date": "2025-10-08",
+	"compatibility_flags": ["nodejs_compat"],
+	"upload_source_maps": true,
+	"observability": {
+		"enabled": true
+	},
+	"assets": {
+		"directory": "./dist/client",
+		"not_found_handling": "single-page-application",
+		"run_worker_first": ["/api", "/api/*", "/llms.txt", "/llms-full.txt"]
+	},
+	"ai": {
+		"binding": "AI"
+	},
+	"kv_namespaces": [
+		{
+			"binding": "ENRICHMENT_CACHE",
+			"id": "ac8ec7af6f8246bda5ac00afec2ce9ba"
+		}
+	],
+	"vars": {
+		"MERCHANT_NAME": "Animê-se Shop",
+		"MERCHANT_DESCRIPTION": "Product catalog powered by Commerce llms.txt",
+		"STORE_CURRENCY": "USD",
+		"SHIPPING_POLICY": "All products shipped from the US within 48. hours.",
+		"RETURN_POLICY": "Only items with proven defects, broken or damaged during shipping are accepted for return to refund.",
+		"SHOPIFY_STORE_DOMAIN": " ",
+		"MERCHANT_VERTICAL": "Anime and games merchandise",
+		"ENRICHMENT_CACHE_TTL": "3600",
+		"AI_MODEL": "@cf/google/gemma-4-26b-a4b-it"
+	}
+}
